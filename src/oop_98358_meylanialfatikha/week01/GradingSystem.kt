@@ -3,6 +3,7 @@ package oop_98358_meylanialfatikha.week01
 fun main(args: Array<String>) {
     val studentName = "Alice"
     val score = 85
+    val comments: String? = null
 
     println("Student: $studentName")
     println("Score: $score")
@@ -17,6 +18,7 @@ fun main(args: Array<String>) {
 
     println("Grade: $grade")
     println("Status: ${calculateStatus(score)}")
+    println("Comments: ${comments ?: "No comments"}")
 }
 
 fun calculateStatus(score: Int) = if (score >= 55) "PASSED" else "FAILED"
