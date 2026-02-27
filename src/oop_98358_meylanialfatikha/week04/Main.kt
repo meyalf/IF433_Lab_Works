@@ -18,7 +18,22 @@ fun main() {
         numberOfDoors = 4,
         batteryCapacity = 85
     )
-    myElectricCar.accelerate() // Pakai versi final milik ElectricCar
-    myElectricCar.honk()       // Diwarisi dari Car
-    myElectricCar.openTrunk()  // Diwarisi dari Car
+    myElectricCar.accelerate()
+    myElectricCar.honk()
+    myElectricCar.openTrunk()
+
+    println("\n--- Testing Employee Hierarchy ---")
+    val manager = Manager(name = "Budi", baseSalary = 5000000)
+    manager.work()
+    println("Bonus Manager: ${manager.calculateBonus()}")
+
+    println()
+
+    val developer = Developer(
+        name = "Ani",
+        baseSalary = 6000000,
+        programmingLanguage = "Kotlin"
+    )
+    developer.work()
+    println("Bonus Developer: ${developer.calculateBonus()}")
 }
