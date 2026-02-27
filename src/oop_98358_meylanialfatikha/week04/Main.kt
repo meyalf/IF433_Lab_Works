@@ -8,7 +8,17 @@ fun main() {
 
     println("\n--- Testing Car ---")
     val myCar = Car(brand = "Toyota", numberOfDoors = 4)
-    myCar.openTrunk()   // Method milik Car sendiri
-    myCar.honk()        // Method yang sudah di-override
-    myCar.accelerate()  // Gabungan method Parent dan Child
+    myCar.openTrunk()
+    myCar.honk()
+    myCar.accelerate()
+
+    println("\n--- Testing ElectricCar ---")
+    val myElectricCar = ElectricCar(
+        brand = "Tesla",
+        numberOfDoors = 4,
+        batteryCapacity = 85
+    )
+    myElectricCar.accelerate() // Pakai versi final milik ElectricCar
+    myElectricCar.honk()       // Diwarisi dari Car
+    myElectricCar.openTrunk()  // Diwarisi dari Car
 }
