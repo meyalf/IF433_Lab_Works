@@ -40,10 +40,10 @@ fun main() {
         payment.processPayment(75000.0)
 
         // Smart Casting Challenge
-        // Jika EWallet, topUp dulu lalu coba bayar lagi
+        // Smart Casting Challenge
         if (payment is EWallet) {
             payment.topUp(50000.0)
             payment.processPayment(75000.0)
         }
+        }
     }
-}
