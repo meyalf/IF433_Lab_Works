@@ -22,11 +22,28 @@ fun main() {
         println("--------------------------")
     }
 
-    // ===== TEST MATHHELPER =====
     println("\n=== TEST MATHHELPER ===")
     val math = MathHelper()
-
     println("Luas Persegi (sisi=5): ${math.hitungLuas(5)}")
     println("Luas Persegi Panjang (4x6): ${math.hitungLuas(4, 6)}")
     println("Luas Lingkaran (jari-jari=7.0): ${math.hitungLuas(7.0)}")
+
+    // ===== TEST PAYMENT POLYMORPHISM =====
+    println("\n=== TEST SISTEM PEMBAYARAN ===")
+    val ewallet = EWallet(accountName = "Budi", balance = 50000.0)
+    val creditCard = CreditCard(accountName = "Ani", limit = 100000.0)
+
+    val daftarPayment: List<PaymentMethod> = listOf(ewallet, creditCard)
+
+    for (payment in daftarPayment) {
+        // Polymorphism - panggil processPayment pada setiap metode pembayaran
+        payment.processPayment(75000.0)
+
+        // Smart Casting Challenge
+        // Jika EWallet, topUp dulu lalu coba bayar lagi
+        if (payment is EWallet) {
+            payment.topUp(50000.0)
+            payment.processPayment(75000.0)
+        }
+    }
 }
