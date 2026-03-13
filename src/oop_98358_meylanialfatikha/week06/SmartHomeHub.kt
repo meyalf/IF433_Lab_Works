@@ -8,7 +8,6 @@ class SmartHomeHub {
         println("Perangkat '${device.name}' ditambahkan ke Hub.")
     }
 
-    // Checkpoint 17: matikan semua perangkat Switchable
     fun turnOffAllSwitches() {
         println("\n--- Mematikan semua perangkat ---")
         for (device in devices) {
@@ -18,7 +17,7 @@ class SmartHomeHub {
         }
     }
 
-    // Checkpoint 18: aktifkan mode keamanan
+    // Advanced Smart Casting: deteksi Recordable dan SmartSpeaker
     fun activateSecurityMode() {
         println("\n--- Mode Keamanan Aktif ---")
         for (device in devices) {
