@@ -44,5 +44,10 @@ fun main() {
     GameManager.startGame() // Pertama kali, game mulai
     GameManager.startGame() // Kedua kali, harus ditolak!
 
+    // ===== CHECKPOINT 19: TEST RARITY & FACTORY =====
+    println("\n=== TEST RARITY & FACTORY ===")
+    println("Drop chance Legendary: ${ItemRarity.LEGENDARY.dropChance}%")
+    val starterSword = Weapon.forgeStarterSword()
+    println("Senjata awal: $starterSword")
 
     }
