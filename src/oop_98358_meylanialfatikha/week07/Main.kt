@@ -21,4 +21,13 @@ fun main() {
     val data2 = DataUser("Alice", 22)
     println(data1) // Otomatis readable format
     println("Sama? ${data1 == data2}") // True (Structural Equality)
+
+    println("\n=== TEST COPY & DESTRUCTURING ===")
+    // copy() - buat objek baru tanpa merusak objek asli (Immutability)
+    val data3 = data1.copy(age = 23)
+    println("Hasil Copy: $data3")
+
+    // Destructuring - memecah objek menjadi variabel terpisah
+    val (userName, userAge) = data1
+    println("Destructured: $userName berumur $userAge")
 }
