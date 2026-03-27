@@ -50,4 +50,15 @@ fun main() {
     val starterSword = Weapon.forgeStarterSword()
     println("Senjata awal: $starterSword")
 
+    // ===== CHECKPOINT 20: TEST COPY & SEALED CLASS EVENTS =====
+    println("\n=== TEST COPY & BATTLE EVENTS ===")
+    // Copy item dengan damage ditingkatkan
+    val upgradedItem = starterSword.item.copy(damage = 25)
+    println("Senjata upgrade: $upgradedItem")
+
+    // Simulasi event berurutan
+    processEvent(BattleState.SafeZone)
+    processEvent(BattleState.MonsterEncounter("Goblin Nakal"))
+    processEvent(BattleState.LootDropped(upgradedItem))
+    processEvent(BattleState.GameOver("Terkena jebakan racun"))
     }
