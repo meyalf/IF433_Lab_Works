@@ -39,5 +39,10 @@ fun main() {
     }
     println(uiMessage)
 
+    // ===== CHECKPOINT 18: TEST GAME MANAGER SINGLETON =====
+    println("\n=== TEST GAME MANAGER ===")
+    GameManager.startGame() // Pertama kali, game mulai
+    GameManager.startGame() // Kedua kali, harus ditolak!
+
 
     }
