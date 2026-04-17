@@ -3,6 +3,8 @@ package oop_98358_meylanialfatikha.week08
 class ApiParser {
 
     fun parseProduct(rawJson: Map<String, Any?>): Product? {
+        // requireNotNull akan throw IllegalArgumentException jika null
+        // as? String → safe cast, jika bukan String hasilnya null
         val id = requireNotNull(rawJson["id"] as? String) {
             "API Invalid: Missing ID"
         }
