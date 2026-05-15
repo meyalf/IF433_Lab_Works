@@ -11,6 +11,7 @@ fun dispenseKibble(requestedGram: Int, availableGram: Int, isJammed: Boolean): I
     println("Kibble berhasil dikeluarkan!")
     return availableGram - requestedGram
 }
+
 fun main() {
     var currentKibbleStock = 50
     println("=== JADWAL MAKAN PAGI ===")
@@ -26,5 +27,7 @@ fun main() {
         println("Error Stok: ${e.message}")
     } catch (e: Exception) {
         println("Error Umum: ${e.message}")
+    } finally {
+        println("Siklus pengecekan dispenser pagi selesai.")
     }
 }
