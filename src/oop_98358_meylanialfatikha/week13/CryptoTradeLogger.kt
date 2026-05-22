@@ -55,4 +55,9 @@ fun main() {
     )
     saveTrades(trades, path = "crypto_trades.csv")
     println("Data trade berhasil disimpan.")
+
+    // Inject data korup untuk test robustness
+    File("crypto_trades.csv").appendText("CORRUPT_ID,DOGEUSDT,Hold,XX,YY\n")
+    println("Data korup berhasil di-inject.")
 }
+
