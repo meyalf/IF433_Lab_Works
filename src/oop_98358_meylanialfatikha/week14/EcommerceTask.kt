@@ -24,3 +24,41 @@ class BadOrderProcessor {
         println("Email terkirim: Pesanan $itemName Anda telah dikonfirmasi!")
     }
 }
+
+// Fix SRP & DIP: Interface untuk repository
+interface OrderRepository {
+    fun saveOrder(itemName: String, finalPrice: Double, customerType: String)
+}
+
+// Implementasi yang menulis ke CSV menggunakan safe use block
+class CsvOrderRepository : OrderRepository {
+    override fun saveOrder(itemName: String, finalPrice: Double, customerType: String) {
+        File("orders.csv").printWriter().use { writer ->
+            writer.println("$itemName,$finalPrice,$customerType")
+        }
+        println("Order tersimpan ke CSV.")
+    }
+}
+
+// Fix SRP & DIP: Interface untuk notifikasi
+interface NotificationService {
+    fun sendNotification(itemName: String)
+}
+
+class EmailNotifier : NotificationService {
+    override fun sendNotification(itemName: String) {
+        println("Email terkirim: Pesanan $itemName Anda telah dikonfirmasi!")
+    }
+}
+
+// Fix SRP & DIP: Inject kedua abstraksi ke constructor
+class SafeOrderProcessor(
+    val repo: OrderRepository,
+    val notifier: NotificationService
+) {
+    fun processOrder(itemName: String, finalPrice: Double, customerType: String) {
+        println("Memproses pesanan $itemName seharga $finalPrice")
+        repo.saveOrder(itemName, finalPrice, customerType)
+        notifier.sendNotification(itemName)
+    }
+}
