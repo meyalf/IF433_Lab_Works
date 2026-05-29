@@ -62,3 +62,28 @@ class SafeOrderProcessor(
         notifier.sendNotification(itemName)
     }
 }
+
+// Fix OCP: Interface untuk kalkulasi harga
+interface PricingStrategy {
+    fun calculate(price: Double): Double
+}
+
+class RegularPricing : PricingStrategy {
+    override fun calculate(price: Double) = price
+}
+
+class VipPricing : PricingStrategy {
+    override fun calculate(price: Double) = price * 0.90
+}
+
+fun main() {
+    val repo = CsvOrderRepository()
+    val notifier = EmailNotifier()
+    val processor = SafeOrderProcessor(repo, notifier)
+
+    val vipPricing = VipPricing()
+    val regularPricing = RegularPricing()
+
+    processor.processOrder("Laptop", vipPricing.calculate(10000.0), "VIP")
+    processor.processOrder("Mouse", regularPricing.calculate(500.0), "REGULAR")
+}
